@@ -1,0 +1,34 @@
+import heapq
+
+def generate_ugly_numbers(n):
+    if n <= 0:
+        return []
+
+    # Min-heap to store the ugly numbers
+    heap = [1]
+    # Set to keep track of visited numbers to avoid duplicates
+    seen = set([1])
+
+    # List to store the first n ugly numbers
+    ugly_numbers = []
+
+    while len(ugly_numbers) < n:
+        # Extract the smallest number from the heap
+        current_ugly = heapq.heappop(heap)
+        ugly_numbers.append(current_ugly)
+
+        # Generate new ugly numbers by multiplying with 2, 3, and 5
+        for i in [2, 3, 5]:
+            new_ugly = current_ugly * i
+            if new_ugly not in seen:
+                seen.add(new_ugly)
+                heapq.heappush(heap, new_ugly)
+
+    return ugly_numbers
+
+# Example usage
+if _name_ == "_main_":
+    n = 15  # Number of ugly numbers to generate
+    ugly_numbers = generate_ugly_numbers(n)
+    print(f"The first {n} ugly numbers are:")
+    print(ugly_numbers)
