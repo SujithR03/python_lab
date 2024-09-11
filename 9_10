@@ -1,0 +1,16 @@
+Exercise: 09
+List Comprehension with Condition:
+numbers = [x for x in range(20)
+if x % 2 == 0]
+print(numbers)
+
+Exercise: 10 Try-Except for Error Handling
+try:
+a = int(input("Enter a number: "))
+b = int(input("Enter another number: "))
+result = a / b
+print(f"Result: {result}")
+except ZeroDivisionError:
+print("Error: Division by zero is not allowed")
+except ValueError:
+print("Error: Invalid input, please enter a number")
